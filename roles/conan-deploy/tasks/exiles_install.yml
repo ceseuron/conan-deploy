@@ -1,7 +1,7 @@
 ---
 - name: Create Conan Exiles base directory.
   file:
-    path: /home/"{{ conan_user }}"/exiles
+    path: "/home/{{ conan_user }}/exiles"
     state: directory
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
