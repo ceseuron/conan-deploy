@@ -48,3 +48,8 @@
     comment: ARK server user.
     group: "{{ conan_group }}"
     state: present
+
+- name: Install WineHQ apt key.
+  apt_key:
+    url: https://dl.winehq.org/wine-builds/winehq.key
+    state: present
