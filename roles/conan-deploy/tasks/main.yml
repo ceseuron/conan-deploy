@@ -1,3 +1,7 @@
+---
 - name: Prepare system - Ubuntu/Debian.
   include_tasks: prep_ubuntu.yml
   when: ansible_facts['os_family'] == 'Debian'
+
+- name: Install Conan Exiles server.
+  include_tasks: exiles_install.yml
