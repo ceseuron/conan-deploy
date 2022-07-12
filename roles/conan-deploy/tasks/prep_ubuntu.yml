@@ -57,9 +57,9 @@
 - name: Add WineHQ repository.
   apt_repository:
     repo: deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main
+    update_cache: true
 
 - name: Install Wine.
   apt:
     name: winehq-stable
     state: present
-    update_cache: true
