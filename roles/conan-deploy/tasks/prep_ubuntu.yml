@@ -1,0 +1,50 @@
+- name: Install multiverse repository.
+  apt_repository:
+    repo: deb http://archive.ubuntu.com/ubuntu jammy multiverse
+    state: present
+    update_cache: true
+
+- name: Install software-properties-common
+  apt:
+    name: software-properties-common
+    state: present
+    update_cache: true
+
+- name: Check if i386 architecture is installed already.
+  shell: dpkg --print-foreign-architectures | grep i386
+  register: i386_result
+  ignore_errors: true
+
+- name: Install i386 architecture.
+  command: dpkg --add-architecture i386
+  when: i386_result.rc >= 1
+
+- name: Install packages.
+  apt:
+    name: ['lib32gcc1', 'perl-modules', 'curl', 'lsof', 'libc6-i386', 'bzip2']
+    state: present
+    update_cache: true
+
+- name: Auto-accept Steam license.
+  debconf:
+    name: "steam"
+    question: "steam/question"
+    value: "I AGREE"
+    vtype: "select"
+
+- name: Install package steamcmd.
+  apt:
+    name: steamcmd
+    state: present
+
+- name: Set up Conan group.
+  group:
+    name: "{{ conan_group }}"
+    state: present
+
+- name: Set up Conan user.
+  user:
+    name: "{{ conan_user }}"
+    comment: ARK server user.
+    group: "{{ conan_group }}"
+    state: present

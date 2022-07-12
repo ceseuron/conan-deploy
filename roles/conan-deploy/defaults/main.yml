@@ -1,0 +1,4 @@
+---
+# General Conan configuration values.
+conan_group: "conan"
+conan_user: "conan"
