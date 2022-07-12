@@ -53,3 +53,13 @@
   apt_key:
     url: https://dl.winehq.org/wine-builds/winehq.key
     state: present
+
+- name: Add WineHQ repository.
+  apt_repository:
+    repo: deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main
+
+- name: Install Wine.
+  apt:
+    name: winehq-stable
+    state: present
+    update_cache: true
