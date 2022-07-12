@@ -61,5 +61,5 @@
 
 - name: Install Wine.
   apt:
-    name: winehq-stable
+    name: wine-stable
     state: present
