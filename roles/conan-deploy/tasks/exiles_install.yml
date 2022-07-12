@@ -5,3 +5,8 @@
     state: directory
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
+
+- name: Download Conan Exiles server from Steam via steamcmd.
+  command: "steamcmd +@sSteamCmdForcePlatformType windows +login anonymous +force_install_dir /home/{{ conan_user }}/exiles +app_update 443030 +exit"
+  become: yes
+  become_user: "{{ conan_user }}"
