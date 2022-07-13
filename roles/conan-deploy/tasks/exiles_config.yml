@@ -1,0 +1,22 @@
+---
+- name: Include secret variables.
+  include_vars: ./roles/conan-deploy/vars/secrets.yml
+
+- name: Create ConanSandbox configuration directories.
+  file:
+    path: "/home/{{ conan_user }}/exiles/{{ item }}"
+    state: present
+    owner: "{{ conan_user }}"
+    group: "{{ conan_group }}"
+  with_items:
+    - "ConanSandbox"
+    - "ConanSandbox/Saved"
+    - "ConanSandbox/Saved/Config"
+    - "ConanSandbox/Saved/Config/WindowsServer"
+
+- name: Deploy Engine.ini from template.
+  template:
+    src: ./roles/conan-deploy/templates/Engine.ini.j2
+    dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Saved/Config/WindowsServer/Engine.ini"
+    user: "{{ conan_user }}"
+    group: "{{ conan_group }}"

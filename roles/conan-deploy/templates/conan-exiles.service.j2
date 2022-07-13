@@ -6,7 +6,7 @@ After=network.target
 [Service]
 Environment="WINEPREFIX=/home/{{ conan_user }}/.wine64 "
 Environment="WINEARCH=win64"
-ExecStart=/usr/bin/wine /home/"{{ conan_user }}"/exiles/ConanSandboxServer.exe -log
+ExecStart= xvfb-run --auto-servernum --server-args="-screen 640x480x24:32" /usr/bin/wine /home/"{{ conan_user }}"/exiles/ConanSandboxServer.exe -log
 User={{ conan_user }}
 Group={{ conan_group }}
 

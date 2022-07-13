@@ -2,3 +2,10 @@
 # General Conan configuration values.
 conan_group: conan
 conan_user: conan
+
+# Server name.
+server_name: DMH - Conan Exiles Server
+
+# Server port configuration.
+server_port: 7777 # Conan Exiles server port.
+server_query_port: 27077 # Steam query port.
