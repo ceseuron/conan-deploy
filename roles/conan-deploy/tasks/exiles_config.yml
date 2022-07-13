@@ -5,7 +5,7 @@
 - name: Create ConanSandbox configuration directories.
   file:
     path: "/home/{{ conan_user }}/exiles/{{ item }}"
-    state: present
+    state: directory
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
   with_items:
