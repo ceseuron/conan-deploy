@@ -1,7 +1,13 @@
 [URL]
-Port=7777                 ;The Port for your Server
+Port={{ server_port }}                 ;The Port for your Server
 
 [OnlineSubsystemSteam]
-ServerName=               ;The Name of your Server which is shown in the Server Browser
-ServerQueryPort=27015     ;The Port the SteamAPI will query your Server from
-ServerPassword=           ;The Password needed to access the Server
+ServerName= "{{ server_name }}"              ;The Name of your Server which is shown in the Server Browser
+ServerQueryPort="{{ server_query_port }}"     ;The Port the SteamAPI will query your Server from
+ServerPassword="{{ server_password }}"          ;The Password needed to access the Server
+
+[RconPlugin]
+RconEnabled = 1
+RconPassword = "{{ admin_password }}"
+RconPort = 25575
+RconMaxKarma= 60

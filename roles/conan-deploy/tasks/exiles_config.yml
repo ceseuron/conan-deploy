@@ -13,11 +13,24 @@
     - "ConanSandbox/Saved"
     - "ConanSandbox/Saved/Config"
     - "ConanSandbox/Saved/Config/WindowsServer"
-    - "ConanSandbox/Saved/Config/WindowsServer/Test"
 
 - name: Deploy Engine.ini from template.
   template:
     src: ./roles/conan-deploy/templates/Engine.ini.j2
     dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Saved/Config/WindowsServer/Engine.ini"
+    owner: "{{ conan_user }}"
+    group: "{{ conan_group }}"
+
+- name: Deploy Game.ini from template.
+  template:
+    src: ./roles/conan-deploy/templates/Game.ini.j2
+    dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Saved/Config/WindowsServer/Game.ini"
+    owner: "{{ conan_user }}"
+    group: "{{ conan_group }}"
+
+- name: Deploy ServerSettings.ini from template.
+  template:
+    src: ./roles/conan-deploy/templates/ServerSettings.ini.j2
+    dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Saved/Config/WindowsServer/ServerSettings.ini"
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"

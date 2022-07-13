@@ -3,8 +3,9 @@
 conan_group: conan
 conan_user: conan
 
-# Server name.
+# Server nam and max player count.
 server_name: DMH - Conan Exiles Server
+server_max_players: 30
 
 # Server port configuration.
 server_port: 7777 # Conan Exiles server port.
