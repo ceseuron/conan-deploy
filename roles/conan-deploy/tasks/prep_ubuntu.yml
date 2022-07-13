@@ -59,8 +59,13 @@
     repo: deb https://dl.winehq.org/wine-builds/ubuntu/ jammy main
     update_cache: yes
 
-- name: Install Wine.
+- name: Install Wine stable.
   apt:
-    name: wine-stable
+    name: [wine-stable]
     install_recommends: yes
+    state: present
+
+- name: Install additional Wine packages.
+  apt:
+    name: ['wine64', 'wine32']
     state: present
