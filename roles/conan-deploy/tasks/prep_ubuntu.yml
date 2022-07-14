@@ -21,7 +21,8 @@
 
 - name: Install packages.
   apt:
-    name: ['lib32gcc-s1', 'perl-modules', 'curl', 'lsof', 'libc6-i386', 'bzip2', 'xvfb']
+    name: ["lib32gcc-s1", "perl-modules", "curl", "lsof", "libc6-i386", "bzip2",
+           "xvfb", "winbind", "fluxbox", "vnc4server"]
     state: present
     update_cache: true
 
@@ -67,5 +68,23 @@
 
 - name: Install additional Wine packages.
   apt:
-    name: ['wine64', 'wine32']
+    name: ["wine64", "wine32"]
     state: present
+
+- name: Deploy VNC Server start script.
+  file:
+    src: ./roles/conan-deploy/files/vnc-server.sh
+    dest: /usr/bin/vnc-server.sh
+    owner: root
+    group: root
+
+- name: Deploy VNC Server service.
+  template:
+    src: ./roles/conan-deploy/templates/vnc-server.service.j2
+    dest: /etc/systemd/system/vnc-server.service
+
+- name: Configure SystemD for Conan Exiles server.
+  systemd:
+    name: vnc-server.service
+    enabled: yes
+    daemon_reload: yes
