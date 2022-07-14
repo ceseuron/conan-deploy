@@ -22,7 +22,7 @@
 - name: Install packages.
   apt:
     name: ["lib32gcc-s1", "perl-modules", "curl", "lsof", "libc6-i386", "bzip2",
-           "xvfb", "winbind", "fluxbox", "vnc4server"]
+           "xvfb", "winbind", "ubuntu-desktop-minimal"]
     state: present
     update_cache: true
 
