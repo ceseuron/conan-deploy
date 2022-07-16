@@ -6,13 +6,10 @@ ServerName={{ server_name }}
 ServerPassword={{ server_password }}
 
 [OnlineSubsystemNull]
-ServerQueryPort={{ server_query_port }}
-
-[RconPlugin]
-RconEnabled=1
-RconPassword={{ admin_password }}
-RconPort={{ server_rcon_port }}
-RconMaxKarma=60
+GameServerQueryPort={{ server_query_port }}
 
 [Core.Log]
 LogStreaming=Warning off
+
+[/Script/ConanSandbox.SystemSettings]
+ModFileDownload.DownloadPortOffset=2
