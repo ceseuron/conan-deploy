@@ -38,5 +38,6 @@
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
     line: "*{{ item.path | basename }}"
+    create: yes
   with_items:
     - "{{ mods_to_copy.files }}"
