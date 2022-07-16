@@ -7,7 +7,7 @@
     group: "{{ conan_group }}"
 
 - name: Download Conan Exiles server from Steam. This may take some time!
-  command: "/usr/games/steamcmd +@sSteamCmdForcePlatformType windows +login anonymous +force_install_dir /home/{{ conan_user }}/exiles +app_update 443030 +exit"
+  command: "/usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir /home/{{ conan_user }}/exiles +login anonymous +app_update 443030 +exit"
   become: yes
   become_user: "{{ conan_user }}"
 
