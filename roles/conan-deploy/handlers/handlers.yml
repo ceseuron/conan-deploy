@@ -1,5 +1,0 @@
----
-- name: Start server
-  service:
-    name: conan-exiles
-    state: start
