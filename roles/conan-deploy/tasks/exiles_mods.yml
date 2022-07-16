@@ -15,3 +15,17 @@
   become_user: "{{ conan_user }}"
   with_items:
     - "{{ server_mod_ids }}"
+
+- name: Gather all *.pak files found in the modtmp directory.
+  find:
+    path: "/home/{{ conan_user }}/exiles/modtmp"
+    recurse: yes
+    data: "*.pak"
+    register: mods_to_copy
+
+- name: Copy all mod files to the mod directory.
+  copy:
+    src: "{{ item.path }}"
+    dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods"
+    owner: "{{ conan_user }}"
+    group: "{{ conan_group }}"

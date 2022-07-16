@@ -10,6 +10,7 @@
     group: "{{ conan_group }}"
   with_items:
     - "ConanSandbox"
+    - "ConanSandbox/Mods"
     - "ConanSandbox/Saved"
     - "ConanSandbox/Saved/Config"
     - "ConanSandbox/Saved/Config/WindowsServer"
