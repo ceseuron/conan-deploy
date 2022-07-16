@@ -6,7 +6,7 @@
     group: "{{ conan_group }}"
 
 - name: Download mods from Steam workshop. This may take some time!
-  command: "/usr/games/steamcmd +@sSteamCmdForcePlatformType windows +login anonymous +force_install_dir /home/{{ conan_user }}/exiles/modtmp +workshop_download_item 443030 {{ item }}"
+  command: "/usr/games/steamcmd +@sSteamCmdForcePlatformType windows +login anonymous +force_install_dir /home/{{ conan_user }}/exiles/modtmp +workshop_download_item 443030 {{ item }} +exit"
   become: yes
   become_user: "{{ conan_user }}"
   with_items:
