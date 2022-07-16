@@ -20,7 +20,7 @@
   find:
     paths: "/home/{{ conan_user }}/exiles/modtmp"
     recurse: yes
-    data: "*.pak"
+    patterns: "*.pak"
   register: mods_to_copy
 
 - name: Copy all mod files to the mod directory.
