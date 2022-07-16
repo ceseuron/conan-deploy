@@ -18,7 +18,7 @@
 
 - name: Gather all *.pak files found in the modtmp directory.
   find:
-    path: "/home/{{ conan_user }}/exiles/modtmp"
+    paths: "/home/{{ conan_user }}/exiles/modtmp"
     recurse: yes
     data: "*.pak"
     register: mods_to_copy
