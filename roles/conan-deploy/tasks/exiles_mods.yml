@@ -30,4 +30,4 @@
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
   with_items:
-    - mods_to_copy
+    - "{{ mods_to_copy.files }}"
