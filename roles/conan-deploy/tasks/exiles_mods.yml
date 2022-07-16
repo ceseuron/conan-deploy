@@ -21,7 +21,7 @@
     paths: "/home/{{ conan_user }}/exiles/modtmp"
     recurse: yes
     data: "*.pak"
-    register: mods_to_copy
+  register: mods_to_copy
 
 - name: Copy all mod files to the mod directory.
   copy:
@@ -29,3 +29,5 @@
     dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods"
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
+  with_items:
+    - mods_to_copy
