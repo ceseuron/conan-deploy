@@ -35,3 +35,24 @@
     dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Saved/Config/WindowsServer/ServerSettings.ini"
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
+
+- name: Deploy CharacterLOD.ini from template.
+  template:
+    src: ./roles/conan-deploy/templates/CharacterLOD.ini.j2
+    dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Saved/Config/WindowsServer/CharacterLOD.ini"
+    owner: "{{ conan_user }}"
+    group: "{{ conan_group }}"
+
+- name: Deploy Lightmass.ini from template.
+  template:
+    src: ./roles/conan-deploy/templates/Lightmass.ini.j2
+    dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Saved/Config/WindowsServer/Lightmass.ini"
+    owner: "{{ conan_user }}"
+    group: "{{ conan_group }}"
+
+- name: Deploy Scalability.ini from template.
+  template:
+    src: ./roles/conan-deploy/templates/Scalability.ini.j2
+    dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Saved/Config/WindowsServer/Scalability.ini"
+    owner: "{{ conan_user }}"
+    group: "{{ conan_group }}"

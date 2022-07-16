@@ -5,12 +5,36 @@ UserID=steam
 MaxPlayers={{ server_max_players }}
 
 [/script/engine.gamenetworkmanager]
-TotalNetBandwidth=4000000
+TotalNetBandwidth=80000000
 MaxDynamicBandwidth=100000
-MinDynamicBandwidth=40000
+MinDynamicBandwidth=10000
+MoveRepSize=512.0f
+MAXPOSITIONERRORSQUARED=3.0f
+MAXCLIENTUPDATEINTERVAL=0.25f
+MaxMoveDeltaTime=0.125f
+MaxClientSmoothingDeltaTime=1.0f
+ClientAuthorativePosition=true
 
 [RconPlugin]
 RconEnabled=1
 RconPassword={{ admin_password }}
 RconPort={{ server_rcon_port }}
 RconMaxKarma=60
+
+[/script/engine.granitesettings]
+bAdvanced=True
+r.GraniteStreamLightMaps=True
+
+[/script/conansandbox.aisense_newsight]
+MaxTracesPerTick=2000
+
+[/script/conansandbox.aisenseconfig_newsight]
+PeripheralVisionAngleDegrees=75
+
+[/script/aimodule.envquerymanager]
+MaxAllowedTestingTime=0.003
+bTestQueriesUsingBreadth=false
+
+[Settings.Physics.Cloth]
+MaxClothSimuatingActors=3
+ClothSimulationAdjustmentInterval=0.650000
