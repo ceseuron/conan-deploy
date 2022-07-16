@@ -1,3 +1,7 @@
+---
+- name: Include secret variables.
+  include_vars: ./roles/conan-deploy/vars/secrets.yml
+
 - name: Create ConanSandbox mod temp directory.
   file:
     path: "/home/{{ conan_user }}/exiles/modtmp"
