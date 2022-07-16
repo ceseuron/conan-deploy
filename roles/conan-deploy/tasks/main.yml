@@ -6,5 +6,8 @@
 - name: Install Conan Exiles server.
   include_tasks: exiles_install.yml
 
+- name: Deploy Conan Exiles mods.
+  include_tasks: exiles_mods.yml
+
 - name: Configure Conan Exiles server.
   include_tasks: exiles_config.yml

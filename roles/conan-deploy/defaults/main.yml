@@ -7,6 +7,22 @@ conan_user: conan
 server_name: DMH - Conan Exiles Server
 server_max_players: 30
 
+# List of mod IDs to download to the server.
+server_mod_ids:
+  - "2504579071"
+  - "2483184203"
+  - "1125403124"
+  - "887629852"
+  - "884168480"
+  - "931088249"
+  - "1382120864"
+  - "2690473254"
+  - "1138927186"
+  - "1934607107"
+  - "864199675"
+  - "1369743238"
+
 # Server port configuration.
 server_port: 7777 # Conan Exiles server port.
 server_query_port: 27077 # Steam query port.
+server_rcon_port: 25575 # RCON Port

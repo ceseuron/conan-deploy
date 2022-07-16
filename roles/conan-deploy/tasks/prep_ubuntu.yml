@@ -21,8 +21,7 @@
 
 - name: Install packages.
   apt:
-    name: ["lib32gcc-s1", "perl-modules", "curl", "lsof", "libc6-i386", "bzip2",
-           "xvfb", "winbind", "ubuntu-desktop-minimal"]
+    name: ["lib32gcc-s1", "perl-modules", "curl", "lsof", "libc6-i386", "bzip2", "xvfb", "winbind"]
     state: present
     update_cache: true
 
@@ -46,7 +45,7 @@
 - name: Set up Conan user.
   user:
     name: "{{ conan_user }}"
-    comment: ARK server user.
+    comment: Conan Exiles server user.
     group: "{{ conan_group }}"
     state: present
 
@@ -62,7 +61,7 @@
 
 - name: Install Wine stable.
   apt:
-    name: [wine-stable]
+    name: ["wine-stable"]
     install_recommends: yes
     state: present
 
