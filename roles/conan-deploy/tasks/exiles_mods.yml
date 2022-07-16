@@ -31,3 +31,12 @@
     group: "{{ conan_group }}"
   with_items:
     - "{{ mods_to_copy.files }}"
+
+- name: Create modlist.txt from template.
+  lineinfile:
+    path: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods/modlist.txt"
+    owner: "{{ conan_user }}"
+    group: "{{ conan_group }}"
+    line: "*{{ item.path | basename }}"
+  with_items:
+    - "{{ mods_to_copy.files }}"
