@@ -1,13 +1,13 @@
 [URL]
-Port={{ server_port }}                 ;The Port for your Server
+Port={{ server_port }}
 
 [OnlineSubsystemSteam]
-ServerName= "{{ server_name }}"              ;The Name of your Server which is shown in the Server Browser
-ServerQueryPort="{{ server_query_port }}"     ;The Port the SteamAPI will query your Server from
-ServerPassword="{{ server_password }}"          ;The Password needed to access the Server
+ServerName={{ server_name }}
+ServerQueryPort={{ server_query_port }}
+ServerPassword={{ server_password }}
 
 [RconPlugin]
-RconEnabled = 1
-RconPassword = "{{ admin_password }}"
-RconPort = "{{ server_rcon_port }}"
-RconMaxKarma= 60
+RconEnabled=1
+RconPassword={{ admin_password }}
+RconPort={{ server_rcon_port }}
+RconMaxKarma=60

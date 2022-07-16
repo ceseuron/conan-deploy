@@ -23,6 +23,6 @@ server_mod_ids:
   - "1369743238"
 
 # Server port configuration.
-server_port: 7777 # Conan Exiles server port.
+server_port: 7077 # Conan Exiles server port.
 server_query_port: 27077 # Steam query port.
 server_rcon_port: 25575 # RCON Port
