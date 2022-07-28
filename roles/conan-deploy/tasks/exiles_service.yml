@@ -3,3 +3,13 @@
   systemd:
     service: conan-exiles.service
     state: started
+
+- name: Insert crontab to restart service at 0900 UTC every day.
+  cron:
+    name: conan exiles
+    weekday: "*"
+    hour: "9"
+    mninute: "0"
+    user: root
+    job: "systemctl restart conan-exiles.service"
+    state: present
