@@ -1,5 +1,5 @@
 ---
 - name: Start Conan Exiles server.
   systemd:
-    service: conan-exiles.services
+    service: conan-exiles.service
     state: started
