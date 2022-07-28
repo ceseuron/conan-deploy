@@ -9,19 +9,26 @@
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
 
+- name: Gather all *.pak files found in the modtmp directory.
+  find:
+    paths: "/home/{{ conan_user }}/exiles/modtmp"
+    recurse: yes
+    patterns: "*.pak"
+  register: mods_to_clear
+
+- name: Clear any existing mods in tmp directory before downloading new ones.
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items:
+    - "{{ mods_to_clear.files }}"
+
 - name: Download mods from Steam workshop. This may take some time!
   command: "/usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir /home/{{ conan_user }}/exiles/modtmp +login {{ steam_user }} {{ steam_password }} +workshop_download_item 440900 {{ item }} +exit"
   become: yes
   become_user: "{{ conan_user }}"
   with_items:
     - "{{ server_mod_ids }}"
-
-- name: Gather all *.pak files found in the modtmp directory.
-  find:
-    paths: "/home/{{ conan_user }}/exiles/modtmp"
-    recurse: yes
-    patterns: "*.pak"
-  register: mods_to_copy
 
 - name: Gather all *.pak files found in the game mod directory.
   find:
@@ -37,6 +44,13 @@
     state: absent
   with_items:
     - "{{ mods_to_delete.files }}"
+
+- name: Gather all *.pak files found in the modtmp directory.
+  find:
+    paths: "/home/{{ conan_user }}/exiles/modtmp"
+    recurse: yes
+    patterns: "*.pak"
+  register: mods_to_copy
 
 - name: Copy all mod files to the mod directory.
   copy:
