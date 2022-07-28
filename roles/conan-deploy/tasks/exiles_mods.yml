@@ -47,6 +47,11 @@
   with_items:
     - "{{ mods_to_copy.files }}"
 
+- name: Remove modlist.txt so it can be replaced.
+  file:
+    path: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods/modlist.txt"
+    state: absent
+
 - name: Create modlist.txt from template.
   lineinfile:
     path: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods/modlist.txt"
