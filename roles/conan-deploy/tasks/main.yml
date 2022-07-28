@@ -11,3 +11,6 @@
 
 - name: Deploy Conan Exiles mods.
   include_tasks: exiles_mods.yml
+
+- name: Conan Exiles server daemon.
+  include_tasks: exiles_service.yml

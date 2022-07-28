@@ -23,6 +23,21 @@
     patterns: "*.pak"
   register: mods_to_copy
 
+- name: Gather all *.pak files found in the game mod directory.
+  find:
+    paths: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods"
+    recurse: yes
+    patterns: "*.pak"
+  register: mods_to_delete
+  ignore_errors: true
+
+- name: Clear any existing mods before installing new ones.
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items:
+    - "{{ mods_to_delete.files }}"
+
 - name: Copy all mod files to the mod directory.
   copy:
     src: "{{ item.path }}"

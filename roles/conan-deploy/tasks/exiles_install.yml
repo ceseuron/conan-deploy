@@ -1,4 +1,13 @@
 ---
+- name: Get list of services installed on the system.
+  service_facts:
+
+- name: Stop Conan Exiles service if it's running.
+  systemd:
+    name: conan-exiles.service
+    state: stopped
+  when: "'conan-exiles.service' in services"
+  
 - name: Create Conan Exiles base directory.
   file:
     path: "/home/{{ conan_user }}/exiles"
