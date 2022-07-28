@@ -9,7 +9,7 @@
     name: conan exiles
     weekday: "*"
     hour: "9"
-    mninute: "0"
+    minute: "0"
     user: root
     job: "systemctl restart conan-exiles.service"
     state: present
