@@ -9,6 +9,13 @@ Environment="WINEARCH=win64"
 ExecStart=xvfb-run --auto-servernum --server-args="-screen 1 640x480x24:32" /usr/bin/wine /home/"{{ conan_user }}"/exiles/ConanSandboxServer.exe -log -useallavailablecores
 User={{ conan_user }}
 Group={{ conan_group }}
+CPUAffinity=0 1 2 3 4 5 6 7
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=75
+CPUSchedulingResetOnFork=false
+NUMAPolicy=preferred
+IOSchedulingClass=best-effort
+IOSchedulingPriority=2
 
 [Install]
 WantedBy=default.target
