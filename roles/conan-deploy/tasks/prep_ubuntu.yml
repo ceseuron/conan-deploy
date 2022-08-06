@@ -21,7 +21,7 @@
 
 - name: Install packages.
   apt:
-    name: ["lib32gcc-s1", "perl-modules", "curl", "lsof", "libc6-i386", "bzip2", "xvfb", "winbind"]
+    name: ["lib32gcc-s1", "perl-modules", "curl", "lsof", "libc6-i386", "bzip2", "xvfb", "winbind", "rsyslog"]
     state: present
     update_cache: true
 
