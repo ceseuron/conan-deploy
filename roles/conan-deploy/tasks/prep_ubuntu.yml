@@ -37,10 +37,31 @@
     name: steamcmd
     state: present
 
-- name: Set open file limit for sysctl.
+- name: Set max socket buffer size.
   sysctl:
-    name: fs.file-max
-    value: 500000
+    name: net.core.rmem_max
+    value: 268435456
+    state: present
+    reload: yes
+
+- name: Set max socket buffer size.
+  sysctl:
+    name: net.core.wmem_max
+    value: 268435456
+    state: present
+    reload: yes
+
+- name: Set max socket buffer size.
+  sysctl:
+    name: net.core.rmem_default
+    value: 268435456
+    state: present
+    reload: yes
+
+- name: Set max socket buffer size.
+  sysctl:
+    name: net.core.wmem_default
+    value: 268435456
     state: present
     reload: yes
 
