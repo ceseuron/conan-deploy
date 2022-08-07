@@ -37,6 +37,38 @@
     name: steamcmd
     state: present
 
+- name: Set open file limit for sysctl.
+  sysctl:
+    name: fs.file-max
+    value: 500000
+    state: present
+    reload: yes
+
+- name: Set PAM nofile hard limit.
+  pam_limits:
+    domain: "*"
+    limit_item: nofile
+    limit_type: hard
+    value: 1000000
+
+- name: Set PAM nofile soft limit.
+  pam_limits:
+    domain: "*"
+    limit_item: nofile
+    limit_type: soft
+    value: 1000000
+
+- name: Set PAM session requirements.
+  pamd:
+    name: common-session
+    module_path: pam_systemd.so
+    type: session
+    control: optional
+    new_type: session
+    new_control: required
+    new_module_path: pam_limits.so
+    state: after
+
 - name: Set up Conan group.
   group:
     name: "{{ conan_group }}"
