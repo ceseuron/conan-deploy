@@ -24,3 +24,7 @@
     job: "systemctl restart conan-exiles.service"
     state: present
 
+- name: Start the Conan Exiles service.
+  systemd:
+    name: conan-exiles.service
+    state: started
