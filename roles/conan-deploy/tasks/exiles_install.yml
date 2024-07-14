@@ -1,4 +1,7 @@
 ---
+- name: Include variables.
+  include_vars: ./roles/conan-deploy/defaults/main.yml
+  
 - name: Get list of services installed on the system.
   service_facts:
 

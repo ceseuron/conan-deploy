@@ -1,3 +1,6 @@
+- name: Include variables.
+  include_vars: ./roles/conan-deploy/defaults/main.yml
+
 - name: Install multiverse repository.
   apt_repository:
     repo: deb http://archive.ubuntu.com/ubuntu jammy multiverse

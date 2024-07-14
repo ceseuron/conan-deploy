@@ -1,4 +1,7 @@
 ---
+- name: Include variables.
+  include_vars: ./roles/conan-deploy/defaults/main.yml
+  
 - name: Include secret variables.
   include_vars: ./roles/conan-deploy/vars/secrets.yml
 
