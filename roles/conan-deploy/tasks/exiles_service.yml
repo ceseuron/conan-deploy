@@ -11,8 +11,6 @@
   template:
     src: ./roles/conan-deploy/templates/conan-exiles.service.j2
     dest: /etc/systemd/system/conan-exiles.service
-  notify: 
-    - Reload systemd
 
 - name: Insert crontab to restart service at 0900 UTC every day.
   cron:
@@ -28,3 +26,5 @@
   systemd:
     name: conan-exiles.service
     state: started
+    enabled: yes
+    daemon_reload: yes
