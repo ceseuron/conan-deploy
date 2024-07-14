@@ -10,8 +10,9 @@ modids="$basepath/modids.txt"
 # Install/Update Mods
 for mod in `cat $modids`; do
   echo "Downloading mod ID: $mod"
-  if ! /usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir /home/{{ conan_user }}/exiles/modtmp +login anonymous +workshop_download_item 440900 $mod +exit; then
+  if ! /usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir $tempmodpath +login anonymous +workshop_download_item 440900 $mod +exit; then
     echo "Failed to download mod from Steam: $mod"
+    exit 1
   fi
 done
 
