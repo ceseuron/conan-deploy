@@ -1,5 +1,7 @@
-- name: Reload systemd
-  systemd:
-    name: conan-exiles.service
-    enabled: yes
-    daemon_reload: yes
+---
+handlers:
+  - name: Reload systemd
+    systemd:
+      name: conan-exiles.service
+      enabled: yes
+      daemon_reload: yes
