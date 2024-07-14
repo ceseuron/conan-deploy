@@ -1,4 +1,11 @@
-# ---
+---
+- name: Copy Conan Exiles startup script to the exiles directory.
+  template:
+    src: ./roles/conan-deploy/templates/start-server.sh.j2
+    dest: "/home/{{ conan_user }}/exiles/start-server.sh"
+    owner: "{{ conan_user }}"
+    group: "{{ conan_group }}"
+    
 # - name: Start Conan Exiles server.
 #   systemd:
 #     service: conan-exiles.service
