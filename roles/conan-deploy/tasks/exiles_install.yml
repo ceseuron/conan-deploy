@@ -10,6 +10,7 @@
     name: conan-exiles.service
     state: stopped
   when: "'conan-exiles.service' in services"
+  ignore_errors: true
   
 - name: Create Conan Exiles base directory.
   file:
