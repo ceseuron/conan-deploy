@@ -18,7 +18,7 @@ update_mods () {
   # Download update mods from Workshop.
   if ! eval $steamcmd; then
     echo "Failed to download mods."
-    fi
+    exit 1
   fi
 
   # Synchronize mods.
@@ -30,12 +30,13 @@ update_mods () {
 
 update_modlist() {
   # Remove modlist if it's already present.
-  if [[ -f $modlist ]]; then
+  if [[ -f $modlist ]]; thenls
     rm -fr $modlist
-  done
+  fi
 
   for mod in `cat $modids`; do
-    modline=$(find $(find . -type d -name $mod) -type f -name "*.pak" -exec readlink -f {} \;)
+    modloc=$(find $modpath -type d -name $mod | xargs realpath)
+    modline=$(find $modloc -type f -name "*.pak" | xargs realpath)
     echo $modline >> $modlist
   done
 }
@@ -47,8 +48,5 @@ update_mods
 echo "Update modlist."
 update_modlist
 
-
-
-
-
+/usr/bin/xvfb-run --auto-servernum --server-args="-screen 1 640x480x24:32" /usr/bin/wine64 /home/"{{ conan_user }}"/exiles/ConanSandboxServer.exe -log -useallavailablecores
 
