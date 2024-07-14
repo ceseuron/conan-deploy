@@ -9,7 +9,6 @@ Environment="WINEARCH=win64"
 ExecStart="/home/{{ conan_user }}/exiles/start-server.sh"
 User={{ conan_user }}
 Group={{ conan_group }}
-WorkingDirectory="/home/{{ conan_user }}/exiles"
 
 [Install]
 WantedBy=default.target
