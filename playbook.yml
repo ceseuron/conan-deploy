@@ -1,10 +1,8 @@
 ---
-- name: Prepare system - Ubuntu/Debian
+- name: Prepare base system.
   hosts: localhost
   tasks:
-    - include_tasks: ./roles/conan-deploy/tasks/prep_ubuntu.yml
-  when:
-    - ansible_facts['os_family'] == 'Debian'
+    - include_tasks: ./roles/conan-deploy/tasks/prep.yml
 
 - name: Install Conan Exiles
   hosts: localhost
