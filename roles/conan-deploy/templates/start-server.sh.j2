@@ -1,18 +1,22 @@
 #!/bin/bash
 # Conan Exiles server initialization script.
 
-$basepath="/home/{{ conan_user}}/exiles"
+basepath="/home/{{ conan_user }}/exiles"
 tempmodpath="$basepath/modtmp"
 modpath="$basepath/ConanSandbox/Mods"
 modlist="$modpath/modlist.txt"
 modids="$basepath/modids.txt"
 
 # Install/Update Mods
+steamcmd="/usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir $tempmodpath +login anonymous"
 for mod in `cat $modids`; do
-  echo "Downloading mod ID: $mod"
-  if ! /usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir $tempmodpath +login anonymous +workshop_download_item 440900 $mod +exit; then
-    echo "Failed to download mod from Steam: $mod"
-    exit 1
-  fi
+  echo "Downloading mods."
+  steamcmd+=" +workshop_download_item 440900 $mod"
+  # if ! /usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir $tempmodpath +login anonymous +workshop_download_item 440900 $mod +exit; then
+  #   echo "Failed to download mod from Steam: $mod"
+  #   exit 1s
+  # fi
 done
-
+steamcmd+=" +exit"
+echo $steamcmd
+# /usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir /home/conan/exiles/modtmp +login anonymous +workshop_status 440900 880454836 +exit
