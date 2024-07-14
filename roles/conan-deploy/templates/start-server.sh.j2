@@ -8,17 +8,47 @@ modlist="$modpath/modlist.txt"
 modids="$basepath/modids.txt"
 
 # Construct the Steam command to download all the mods in a single command.
-steam_command(){
+update_mods () {
   steamcmd="/usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir $tempmodpath +login anonymous"
   for mod in `cat $modids`; do
     steamcmd+=" +workshop_download_item 440900 $mod"
   done
   steamcmd+=" +workshop_status 440900 +exit"
+  
+  # Download update mods from Workshop.
+  if ! eval $steamcmd; then
+    echo "Failed to download mods."
+    fi
+  fi
+
+  # Synchronize mods.
+  if ! rsync -avP "$tempmodpath/steamapps/workshop/content/440900" "$modpath"; then
+    echo "Failed to update mods."
+    exit 1
+  fi
+}
+
+update_modlist() {
+  # Remove modlist if it's already present.
+  if [[ -f $modlist ]]; then
+    rm -fr $modlist
+  done
+
+  for mod in `cat $modids`; do
+    modline=$(find $(find . -type d -name $mod) -type f -name "*.pak" -exec readlink -f {} \;)
+    echo $modline >> $modlist
+  done
 }
 
 # Download mods.
 echo "Downloading mods from Steam."
-if ! eval $steamcmd; then
-  echo "Failed to download steam mods from workshop"
-  exit 1
-fi
+update_mods
+
+echo "Update modlist."
+update_modlist
+
+
+
+
+
+
