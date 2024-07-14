@@ -24,9 +24,7 @@
   template:
     src: ./roles/conan-deploy/templates/conan-exiles.service.j2
     dest: /etc/systemd/system/conan-exiles.service
+  notifies: 
+    - Reload systemd
 
-- name: Configure SystemD for Conan Exiles server.
-  systemd:
-    name: conan-exiles.service
-    enabled: yes
-    daemon_reload: yes
+

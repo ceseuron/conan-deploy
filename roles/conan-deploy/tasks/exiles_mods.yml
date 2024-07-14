@@ -2,6 +2,9 @@
 - name: Include secret variables.
   include_vars: ./roles/conan-deploy/vars/secrets.yml
 
+- name: Include handlers.
+  include_vars: 
+
 - name: Create ConanSandbox mod temp directory.
   file:
     path: "/home/{{ conan_user }}/exiles/modtmp"
@@ -9,62 +12,12 @@
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
 
-- name: Gather all *.pak files found in the modtmp directory.
-  find:
-    paths: "/home/{{ conan_user }}/exiles/modtmp"
-    recurse: yes
-    patterns: "*.pak"
-  register: mods_to_clear
-
-- name: Clear any existing mods in tmp directory before downloading new ones.
+- name: Create ConanSandBox mod directory.
   file:
-    path: "{{ item.path }}"
-    state: absent
-  with_items:
-    - "{{ mods_to_clear.files }}"
-
-- name: Download mods from Steam workshop. This may take some time!
-  command: "/usr/games/steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir /home/{{ conan_user }}/exiles/modtmp +login {{ steam_user }} {{ steam_password }} +workshop_download_item 440900 {{ item }} +exit"
-  become: yes
-  become_user: "{{ conan_user }}"
-  with_items:
-    - "{{ server_mod_ids }}"
-
-- name: Gather all *.pak files found in the game mod directory.
-  find:
-    paths: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods"
-    recurse: yes
-    patterns: "*.pak"
-  register: mods_to_delete
-  ignore_errors: true
-
-- name: Clear any existing mods before installing new ones.
-  file:
-    path: "{{ item.path }}"
-    state: absent
-  with_items:
-    - "{{ mods_to_delete.files }}"
-
-- name: Gather all *.pak files found in the modtmp directory.
-  find:
-    paths: "/home/{{ conan_user }}/exiles/modtmp"
-    recurse: yes
-    patterns: "*.pak"
-  register: mods_to_copy
-
-- name: Copy all mod files to the mod directory.
-  copy:
-    src: "{{ item.path }}"
-    dest: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods"
+    path: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods"
+    state: directory
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
-  with_items:
-    - "{{ mods_to_copy.files }}"
-
-- name: Remove modlist.txt so it can be replaced.
-  file:
-    path: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods/modlist.txt"
-    state: absent
 
 - name: Create modlist.txt from template.
   lineinfile:

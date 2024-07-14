@@ -1,16 +1,17 @@
 ---
-- name: Prepare system - Ubuntu/Debian.
-  include_tasks: prep_ubuntu.yml
-  when: ansible_facts['os_family'] == 'Debian'
+- name: Prepare system - Ubuntu/Debian
+  hosts: localhost
+  tasks:
+    - include_tasks: ./prep_ubuntu.yml
+  when:
+    - ansible_facts['os_family'] == 'Debian'
 
-- name: Install Conan Exiles server.
-  include_tasks: exiles_install.yml
-
-- name: Configure Conan Exiles server.
-  include_tasks: exiles_config.yml
-
-- name: Deploy Conan Exiles mods.
-  include_tasks: exiles_mods.yml
-
-- name: Conan Exiles server daemon.
-  include_tasks: exiles_service.yml
+- name: Install Conan Exiles
+  hosts: localhost
+  tasks:
+    - include_tasks: ./exiles_install.yml
+    - include_tasks: ./exiles_config.yml
+    - include_tasks: ./exiles_mods.yml
+    - include_tasks: ./exiles_service.yml
+  handlers:
+    - include_tasks: ./handlers.yml
