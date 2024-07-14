@@ -19,12 +19,12 @@
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
 
-- name: Create modlist.txt from template.
+- name: Create modlist for server from template.
   lineinfile:
-    path: "/home/{{ conan_user }}/exiles/ConanSandbox/Mods/modlist.txt"
+    path: "/home/{{ conan_user }}/modids.txt"
     owner: "{{ conan_user }}"
     group: "{{ conan_group }}"
-    line: "*{{ item }}"
+    line: "{{ item }}"
     create: yes
   with_items:
     - "{{ server_mod_ids }}"

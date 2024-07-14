@@ -1,16 +1,10 @@
 #!/bin/bash
 # Conan Exiles server initialization script.
 
-tempmodpath="/home{{ conan_user }}/exiles/modtmp"
-modpath="/home/{{ conan_user }}/exiles/ConanSandbox/Mods"
+$basepath="/home{{ conan_user}}/exiles"
+tempmodpath="$basepath/modtmp"
+modpath="$basepath/ConanSandbox/Mods"
 modlist="$modpath/modlist.txt"
-
-# Die if the modlist.txt file does not exist.
-if [[ ! -f $modlist ]]; then
-  echo "Modlist.txt is missing from the mod path: $modpath"
-  echo "Run ansible playbook to redeploy base configuration."
-  exit 1
-fi
-
+modids="$basepath/modids.txt"
 
 
