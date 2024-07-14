@@ -1,7 +1,7 @@
 ---
 - name: Include variables.
   include_vars: ./roles/conan-deploy/defaults/main.yml
-  
+
 - name: Get list of services installed on the system.
   service_facts:
 
@@ -27,7 +27,7 @@
   template:
     src: ./roles/conan-deploy/templates/conan-exiles.service.j2
     dest: /etc/systemd/system/conan-exiles.service
-  notifies: 
+  notify: 
     - Reload systemd
 
 
