@@ -9,22 +9,37 @@ server_max_players: 30
 
 # List of mod IDs to download to the server.
 server_mod_ids:
-  - "2483184203"
-  - "1125403124"
-  - "887629852"
-  - "884168480"
-  - "931088249"
-  - "1382120864"
-  - "2690473254"
-  - "1138927186"
-  - "1934607107"
-  - "864199675"
-  - "1369743238"
-  - "925197087"
-  - "2275543723"
-  - "1546922129"
+  - "880454836" # Pippi Management
+  - "1823412793" # Mod Control Panel
+  - "1326031593" # Thrall Wars Dungeon Mod
+  - "1367404881" # Savage Steel
+  - "3114041758" # Darkwoods Map Mod
+  - "2271476646" # Caverns of Set Map Mod
+  - "2340032500" # Ymir's Respite Map Mod
+  - "1113901982" # Age of Calamitous
+  - "2284607331" # Valkyrian Arsenal & More
+  - "1629644846" # Paragon Levelling Mod
+  - "933782986" # Exiles Extreme
+  - "1369802940" # Emberlight
+  - "1159180273" # Fashionist
+  - "925197087" # Dye More Betterer Mod
+  - "931088249" # Better Thralls
+  - "2275543723" # Improved Quality of Life
+  - "2681457014" # CWR/Expanded Map - AoC+Darkwoods
+  - "1369743238" # Less Building Restrictions
+  - "1629644846" # LitMan Thrall Placing Distance
+  - "887629852" # LitMan Durability Mod
+  - "1125403124" # LitMan Container Size Mod
+  - "887629852" # Lighted Power Stones
+  - "887629852" # Vex Tattoo Mod
+  - "2992963751" # Legendary sudo aptRepair & Restoration Mod
+  - "863041645" # Bloodbath Mod
+  - "1641464108" # Extended Cartography Mod
+  - "2997899247" # Mounted Combat Restored
+  - "864199675" # Pickup Plus
+  - "863041645" # Greater Camera Distance
 
 # Server port configuration.
-server_port: 7077 # Conan Exiles server port.
-server_query_port: 27077 # Steam query port.
-server_rcon_port: 25575 # RCON Port
+server_port: 7977 # Conan Exiles server port.
+server_query_port: 27977 # Steam query port.
+server_rcon_port: 9977 # RCON Port
