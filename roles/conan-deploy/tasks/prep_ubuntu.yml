@@ -103,6 +103,7 @@
     name: "{{ conan_user }}"
     comment: Conan Exiles server user.
     group: "{{ conan_group }}"
+    shell: /bin/bash
     state: present
 
 - name: Install WineHQ apt key.
