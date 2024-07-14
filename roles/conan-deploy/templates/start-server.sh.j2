@@ -30,7 +30,7 @@ update_mods () {
 
 update_modlist() {
   # Remove modlist if it's already present.
-  if [[ -f $modlist ]]; thenls
+  if [[ -f $modlist ]]; then
     rm -fr $modlist
   fi
 
