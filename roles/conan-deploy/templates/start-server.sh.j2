@@ -48,4 +48,4 @@ update_mods
 echo "Update modlist."
 update_modlist
 
-/usr/bin/wine64 /home/"{{ conan_user }}"/exiles/ConanSandboxServer.exe -log
+/usr/bin/xvfb-run --auto-servernum --server-args="-screen 1 640x480x24:32" /usr/bin/wine64 /home/"{{ conan_user }}"/exiles/ConanSandboxServer.exe -log -MaxPlayers=20
